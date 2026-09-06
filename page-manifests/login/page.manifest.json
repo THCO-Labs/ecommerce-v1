@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "login",
+  "route": "/login",
+  "title": "Sign in",
+  "description": "Signing in adopts whatever is already in the guest basket, so a shopper who filled one before making an account keeps it..",
+  "sourceEntry": "client/src/pages/LoginPage.tsx",
+  "access": "public",
+  "dataDependencies": [],
+  "componentDependencies": [
+    "client/src/features/auth/LoginForm.tsx"
+  ],
+  "editableSections": [
+    "auth.login",
+    "auth.login-form"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/login",
+    "fixture": "page-manifests/login/fixtures.json"
+  },
+  "verification": [
+    "login-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

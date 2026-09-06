@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "order-confirmation",
+  "route": "/orders/confirmation/:reference",
+  "title": "Order confirmation",
+  "description": "Shown straight after checkout and reachable later by anyone holding the link, so it reads a redacted summary \u2014 items, totals and status, never the delivery address..",
+  "sourceEntry": "client/src/pages/ConfirmationPage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "orders"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "confirmation.receipt"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/orders/confirmation/NW-DEMO1234",
+    "fixture": "page-manifests/order-confirmation/fixtures.json"
+  },
+  "verification": [
+    "confirmation-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

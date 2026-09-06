@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard-chrome",
+  "route": "/dashboard",
+  "title": "Dashboard sidebar",
+  "description": "The sidebar shown on every dashboard screen, with links filtered by role.",
+  "sourceEntry": "client/src/components/dashboard-nav.tsx",
+  "access": "staff",
+  "dataDependencies": [],
+  "componentDependencies": [],
+  "editableSections": [
+    "dashboard.navigation"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard",
+    "fixture": "page-manifests/dashboard-chrome/fixtures.json"
+  },
+  "verification": [
+    "sidebar-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

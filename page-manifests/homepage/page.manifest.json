@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "homepage",
+  "route": "/",
+  "title": "Storefront homepage",
+  "description": "The first screen a shopper sees.",
+  "sourceEntry": "client/src/pages/HomePage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "products",
+    "categories"
+  ],
+  "componentDependencies": [
+    "client/src/features/home/FeaturedProductCard.tsx",
+    "client/src/features/home/HeroCollage.tsx"
+  ],
+  "editableSections": [
+    "homepage.hero",
+    "homepage.featured-card",
+    "homepage.collage"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/",
+    "fixture": "page-manifests/homepage/fixtures.json"
+  },
+  "verification": [
+    "homepage-renders",
+    "featured-products-link"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard-users",
+  "route": "/dashboard/users",
+  "title": "Team and roles",
+  "description": "Who may sign in and what they may do.",
+  "sourceEntry": "client/src/pages/dashboard/UsersPage.tsx",
+  "access": "admin",
+  "dataDependencies": [],
+  "componentDependencies": [],
+  "editableSections": [
+    "dashboard.users"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard/users",
+    "fixture": "page-manifests/dashboard-users/fixtures.json"
+  },
+  "verification": [
+    "users-table-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

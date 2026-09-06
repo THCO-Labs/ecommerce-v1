@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" suppressHydrationWarning>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northwind Market</title>
+    <meta
+      name="description"
+      content="Everyday goods, honestly priced. Order online and pay cash when it arrives."
+    />
+    <!-- Paint the stored theme before first paint so the page never flashes light. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("northwind-theme");
+          var dark =
+            stored === "dark" ||
+            ((!stored || stored === "system") &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (error) {
+          /* Private browsing blocks storage; the default light theme is fine. */
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

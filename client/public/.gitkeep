@@ -1,0 +1,2 @@
+# Static assets are served from here. The generated logo is written into this
+# directory, so it must exist in the repository even while it is otherwise empty.

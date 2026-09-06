@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "account",
+  "route": "/account",
+  "title": "Customer account",
+  "description": "Contact details used to prefill checkout, and the order history.",
+  "sourceEntry": "client/src/pages/AccountPage.tsx",
+  "access": "guest",
+  "dataDependencies": [
+    "orders"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "account.overview"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/account",
+    "fixture": "page-manifests/account/fixtures.json"
+  },
+  "verification": [
+    "account-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "catalogue",
+  "route": "/products",
+  "title": "Product catalogue",
+  "description": "Every published product, filtered by category and searched with ?q=.",
+  "sourceEntry": "client/src/pages/CataloguePage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "products",
+    "categories"
+  ],
+  "componentDependencies": [
+    "client/src/features/catalogue/CatalogueProductCard.tsx",
+    "client/src/features/catalogue/CategoryFilter.tsx"
+  ],
+  "editableSections": [
+    "catalogue.results",
+    "catalogue.card",
+    "catalogue.filter"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/products",
+    "fixture": "page-manifests/catalogue/fixtures.json"
+  },
+  "verification": [
+    "catalogue-renders",
+    "category-filter-works"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "checkout",
+  "route": "/checkout",
+  "title": "Checkout",
+  "description": "Where an order is placed.",
+  "sourceEntry": "client/src/pages/CheckoutPage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "cart",
+    "orders"
+  ],
+  "componentDependencies": [
+    "client/src/features/checkout/DeliveryFields.tsx"
+  ],
+  "editableSections": [
+    "checkout.form",
+    "checkout.delivery"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/checkout",
+    "fixture": "page-manifests/checkout/fixtures.json"
+  },
+  "verification": [
+    "checkout-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

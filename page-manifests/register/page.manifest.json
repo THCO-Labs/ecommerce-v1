@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "register",
+  "route": "/register",
+  "title": "Create account",
+  "description": "Self-registration always creates a customer.",
+  "sourceEntry": "client/src/pages/RegisterPage.tsx",
+  "access": "public",
+  "dataDependencies": [],
+  "componentDependencies": [
+    "client/src/features/auth/RegisterForm.tsx"
+  ],
+  "editableSections": [
+    "auth.register",
+    "auth.register-form"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/register",
+    "fixture": "page-manifests/register/fixtures.json"
+  },
+  "verification": [
+    "register-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

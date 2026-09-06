@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard",
+  "route": "/dashboard",
+  "title": "Operations dashboard",
+  "description": "The four numbers the shop is run by.",
+  "sourceEntry": "client/src/pages/dashboard/DashboardPage.tsx",
+  "access": "staff",
+  "dataDependencies": [
+    "orders",
+    "variants"
+  ],
+  "componentDependencies": [
+    "client/src/features/dashboard/MetricCards.tsx"
+  ],
+  "editableSections": [
+    "dashboard.overview",
+    "dashboard.metrics"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard",
+    "fixture": "page-manifests/dashboard/fixtures.json"
+  },
+  "verification": [
+    "dashboard-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

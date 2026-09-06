@@ -1,0 +1,66 @@
+{
+  "header": {
+    "nav": [
+      { "label": "Shop", "href": "/products" },
+      { "label": "Track order", "href": "/orders/lookup" }
+    ],
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "account": "My account",
+    "dashboard": "Dashboard",
+    "cartLabel": "Basket"
+  },
+  "home": {
+    "eyebrow": "Independent general store",
+    "headline": "Things worth keeping, priced without theatre",
+    "primaryAction": "Shop everything",
+    "secondaryAction": "Track an order",
+    "assurances": [
+      {
+        "id": "payment",
+        "title": "Pay at the door",
+        "text": "Cash when it arrives. Nothing is charged online, and there is no card to enter."
+      },
+      {
+        "id": "delivery",
+        "title": "Free delivery",
+        "text": "Orders over {amount} arrive free. Below that, a flat fee shown before you confirm."
+      },
+      {
+        "id": "stock",
+        "title": "Real stock counts",
+        "text": "What you see is what is on the shelf. If it is running low, we say how low."
+      }
+    ],
+    "categoriesHeading": "Departments",
+    "categoriesLead": "Four shelves, stocked slowly.",
+    "featuredHeading": "New in",
+    "featuredLead": "The most recent additions, newest first.",
+    "featuredAction": "See everything"
+  },
+  "footer": {
+    "note": "Cash on delivery. No card needed.",
+    "links": [
+      { "label": "Shop all", "href": "/products" },
+      { "label": "Track an order", "href": "/orders/lookup" }
+    ]
+  },
+  "dashboard": {
+    "workspaceLabel": "Operations",
+    "signOut": "Sign out",
+    "groups": {
+      "overview": "Overview",
+      "operations": "Operations",
+      "catalogue": "Catalogue",
+      "workspace": "Workspace"
+    },
+    "items": {
+      "dashboard": "Dashboard",
+      "orders": "Orders",
+      "inventory": "Inventory",
+      "products": "Products",
+      "users": "Team",
+      "settings": "Settings"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard-settings",
+  "route": "/dashboard/settings",
+  "title": "Shop settings",
+  "description": "Read-only on purpose.",
+  "sourceEntry": "client/src/pages/dashboard/SettingsPage.tsx",
+  "access": "admin",
+  "dataDependencies": [],
+  "componentDependencies": [],
+  "editableSections": [
+    "dashboard.settings"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard/settings",
+    "fixture": "page-manifests/dashboard-settings/fixtures.json"
+  },
+  "verification": [
+    "settings-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

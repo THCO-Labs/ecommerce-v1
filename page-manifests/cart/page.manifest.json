@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "cart",
+  "route": "/cart",
+  "title": "Basket",
+  "description": "The basket, held on the server so it survives a reload and follows the shopper into their account.",
+  "sourceEntry": "client/src/pages/CartPage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "cart"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "cart.lines"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/cart",
+    "fixture": "page-manifests/cart/fixtures.json"
+  },
+  "verification": [
+    "cart-renders",
+    "quantity-change-works"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

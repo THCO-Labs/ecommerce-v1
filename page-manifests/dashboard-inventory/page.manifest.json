@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard-inventory",
+  "route": "/dashboard/inventory",
+  "title": "Inventory and restocking",
+  "description": "Restocking is the one inventory action staff may take, and adjustments are relative so two people counting the same shelf add up instead of overwriting each other.",
+  "sourceEntry": "client/src/pages/dashboard/InventoryPage.tsx",
+  "access": "staff",
+  "dataDependencies": [
+    "variants",
+    "products"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "dashboard.inventory"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard/inventory",
+    "fixture": "page-manifests/dashboard-inventory/fixtures.json"
+  },
+  "verification": [
+    "inventory-table-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

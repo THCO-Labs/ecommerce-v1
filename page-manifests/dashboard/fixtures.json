@@ -1,0 +1,4 @@
+{
+  "description": "Operations dashboard",
+  "route": "/dashboard"
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard-products",
+  "route": "/dashboard/products",
+  "title": "Catalogue management",
+  "description": "Creating products and setting prices is an administrator's decision, which is why this screen is not open to staff.",
+  "sourceEntry": "client/src/pages/dashboard/ProductsPage.tsx",
+  "access": "admin",
+  "dataDependencies": [
+    "products",
+    "variants",
+    "categories"
+  ],
+  "componentDependencies": [
+    "client/src/features/dashboard/ProductForm.tsx",
+    "client/src/features/dashboard/VariantEditor.tsx"
+  ],
+  "editableSections": [
+    "dashboard.products",
+    "dashboard.product-form",
+    "dashboard.variant-editor"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard/products",
+    "fixture": "page-manifests/dashboard-products/fixtures.json"
+  },
+  "verification": [
+    "products-table-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

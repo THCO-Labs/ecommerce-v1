@@ -1,0 +1,40 @@
+{
+  "name": "northwind-market",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack ecommerce monorepo \u2014 Express, React, TypeScript, Vite, Tailwind CSS, Postgres, and Drizzle ORM. Cash on delivery.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "build": "npm run build --workspace server && npm run build --workspace client",
+    "start": "npm run start --workspace server",
+    "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace client",
+    "test": "npm run test --workspace server",
+    "format": "prettier --write \"{server,client}/src/**/*.{ts,tsx,css}\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "npm run db:seed --workspace server"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "concurrently": "^10.0.5",
+    "dotenv": "^17.2.3",
+    "drizzle-kit": "^0.31.10",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "pg": "^8.23.0"
+  }
+}

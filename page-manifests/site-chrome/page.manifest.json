@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "site-chrome",
+  "route": "/",
+  "title": "Site header & footer",
+  "description": "The header and footer that frame every storefront page.",
+  "sourceEntry": "client/src/components/site-header.tsx",
+  "access": "public",
+  "dataDependencies": [],
+  "componentDependencies": [
+    "client/src/components/site-footer.tsx"
+  ],
+  "editableSections": [
+    "site.header",
+    "site.footer"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/",
+    "fixture": "page-manifests/site-chrome/fixtures.json"
+  },
+  "verification": [
+    "header-renders",
+    "footer-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

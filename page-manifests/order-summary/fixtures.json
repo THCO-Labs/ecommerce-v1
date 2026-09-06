@@ -1,0 +1,4 @@
+{
+  "description": "Order summary block",
+  "route": "/orders/lookup"
+}

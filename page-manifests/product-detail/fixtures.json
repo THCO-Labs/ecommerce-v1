@@ -1,0 +1,4 @@
+{
+  "description": "Product detail",
+  "route": "/products/:slug"
+}

@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 3,
+  "templateSource": "ecommerce",
+  "templateVersion": "1.0.0",
+  "framework": "vite-react-express-monorepo",
+  "pageManifestDirectory": "page-manifests",
+  "runtime": {
+    "appRoot": "client",
+    "packageManager": "npm",
+    "install": "npm install",
+    "dev": {
+      "command": "npm run dev",
+      "port": 5173,
+      "readyPath": "/"
+    },
+    "entryPoint": "client/src/main.tsx",
+    "typecheck": "npm run typecheck",
+    "build": "npm run build",
+    "start": "npm run start",
+    "healthPath": "/api/health"
+  },
+  "database": {
+    "required": true,
+    "migrate": "npm run db:migrate",
+    "seed": "npm run db:seed",
+    "extensions": [
+      "pgcrypto"
+    ]
+  },
+  "branding": {
+    "config": "client/src/config/brand.generated.json",
+    "assets": "client/public"
+  },
+  "env": {
+    "required": [
+      "DATABASE_URL",
+      "AUTH_SECRET"
+    ]
+  },
+  "sharedModules": [
+    "client/src/components",
+    "client/src/config",
+    "client/src/layouts",
+    "server/src/common"
+  ],
+  "globalConfig": [
+    "client/src/config/brand.generated.json",
+    "client/src/config/site-content.json",
+    "client/src/index.css"
+  ],
+  "verification": [
+    "typecheck",
+    "render"
+  ],
+  "protectedPaths": [
+    "server/src/common/db",
+    "server/src/modules/auth",
+    "drizzle",
+    "drizzle.config.ts",
+    "package.json",
+    "package-lock.json",
+    "client/src/main.tsx",
+    "client/src/router.tsx",
+    "client/src/api",
+    "client/src/hooks",
+    "client/src/lib",
+    "client/src/types",
+    "client/src/navigation",
+    "client/src/layouts",
+    "client/src/config/app-config.ts",
+    "client/src/components/ui",
+    "client/src/components/product",
+    "client/src/components/price-display.tsx",
+    "client/src/components/stock-badge.tsx",
+    "client/src/components/quantity-stepper.tsx",
+    "client/src/components/brand-mark.tsx",
+    "client/src/components/protected-route.tsx",
+    "client/src/components/theme-provider.tsx",
+    "client/src/components/theme-toggle.tsx"
+  ],
+  "editableSurfaces": [
+    {
+      "id": "site.brand",
+      "kind": "CONFIG",
+      "label": "Brand identity",
+      "sourcePath": "client/src/config/brand.generated.json",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_ASSET"
+      ],
+      "fields": [
+        {
+          "path": "name",
+          "label": "Shop name",
+          "type": "text"
+        },
+        {
+          "path": "description",
+          "label": "Description",
+          "type": "rich_text"
+        },
+        {
+          "path": "tagline",
+          "label": "Tagline",
+          "type": "text"
+        },
+        {
+          "path": "logoPath",
+          "label": "Logo",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "id": "site.chrome",
+      "kind": "CONFIG",
+      "label": "Header and footer wording",
+      "page": "*",
+      "sourcePath": "client/src/config/site-content.json",
+      "operations": [
+        "UPDATE_CONTENT"
+      ],
+      "fields": [
+        {
+          "path": "header.nav",
+          "label": "Header navigation links",
+          "type": "json"
+        },
+        {
+          "path": "header.signIn",
+          "label": "Sign-in label",
+          "type": "text"
+        },
+        {
+          "path": "header.signUp",
+          "label": "Sign-up label",
+          "type": "text"
+        },
+        {
+          "path": "header.account",
+          "label": "Account link label",
+          "type": "text"
+        },
+        {
+          "path": "header.dashboard",
+          "label": "Dashboard link label",
+          "type": "text"
+        },
+        {
+          "path": "header.cartLabel",
+          "label": "Basket label",
+          "type": "text"
+        },
+        {
+          "path": "footer.note",
+          "label": "Footer note",
+          "type": "text"
+        },
+        {
+          "path": "footer.links",
+          "label": "Footer links",
+          "type": "json"
+        }
+      ]
+    },
+    {
+      "id": "dashboard.chrome",
+      "kind": "CONFIG",
+      "label": "Dashboard sidebar wording",
+      "page": "/dashboard/*",
+      "sourcePath": "client/src/config/site-content.json",
+      "operations": [
+        "UPDATE_CONTENT"
+      ],
+      "fields": [
+        {
+          "path": "dashboard.workspaceLabel",
+          "label": "Workspace header",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.signOut",
+          "label": "Sign-out label",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.groups.overview",
+          "label": "Group: overview",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.groups.operations",
+          "label": "Group: operations",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.groups.catalogue",
+          "label": "Group: catalogue",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.groups.workspace",
+          "label": "Group: workspace",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.items.orders",
+          "label": "Link: orders",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.items.inventory",
+          "label": "Link: inventory",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.items.products",
+          "label": "Link: products",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.items.users",
+          "label": "Link: team",
+          "type": "text"
+        },
+        {
+          "path": "dashboard.items.settings",
+          "label": "Link: settings",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "home.copy",
+      "kind": "CONFIG",
+      "label": "Landing page wording",
+      "page": "/",
+      "sourcePath": "client/src/config/site-content.json",
+      "operations": [
+        "UPDATE_CONTENT"
+      ],
+      "fields": [
+        {
+          "path": "home.eyebrow",
+          "label": "Eyebrow line",
+          "type": "text"
+        },
+        {
+          "path": "home.headline",
+          "label": "Headline",
+          "type": "text"
+        },
+        {
+          "path": "home.primaryAction",
+          "label": "Primary button",
+          "type": "text"
+        },
+        {
+          "path": "home.secondaryAction",
+          "label": "Secondary button",
+          "type": "text"
+        },
+        {
+          "path": "home.assurances",
+          "label": "Reassurance points",
+          "type": "json"
+        },
+        {
+          "path": "home.categoriesHeading",
+          "label": "Departments heading",
+          "type": "text"
+        },
+        {
+          "path": "home.categoriesLead",
+          "label": "Departments lead",
+          "type": "text"
+        },
+        {
+          "path": "home.featuredHeading",
+          "label": "Featured heading",
+          "type": "text"
+        },
+        {
+          "path": "home.featuredLead",
+          "label": "Featured lead",
+          "type": "text"
+        },
+        {
+          "path": "home.featuredAction",
+          "label": "Featured link",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "theme.tokens",
+      "kind": "DESIGN",
+      "label": "Theme tokens",
+      "sourcePath": "client/src/index.css",
+      "operations": [
+        "UPDATE_DESIGN_TOKEN"
+      ],
+      "fields": [
+        {
+          "path": "primary",
+          "label": "Primary colour",
+          "type": "color"
+        },
+        {
+          "path": "radius",
+          "label": "Corner radius",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "id": "homepage.hero",
+      "kind": "COMPONENT",
+      "label": "Homepage hero",
+      "page": "/",
+      "sourcePath": "client/src/pages/HomePage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT",
+        "UPDATE_ASSET",
+        "CREATE_COMPONENT_VARIANT"
+      ],
+      "selector": "[data-builder-id=homepage.hero]"
+    },
+    {
+      "id": "homepage.featured-card",
+      "kind": "COMPONENT",
+      "label": "Homepage product card",
+      "page": "/",
+      "sourcePath": "client/src/features/home/FeaturedProductCard.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ]
+    },
+    {
+      "id": "homepage.collage",
+      "kind": "COMPONENT",
+      "label": "Hero product collage",
+      "page": "/",
+      "sourcePath": "client/src/features/home/HeroCollage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT",
+        "UPDATE_ASSET",
+        "CREATE_COMPONENT_VARIANT"
+      ],
+      "selector": "[data-builder-id=homepage.collage]"
+    },
+    {
+      "id": "catalogue.results",
+      "kind": "COMPONENT",
+      "label": "Catalogue grid",
+      "page": "/products",
+      "sourcePath": "client/src/pages/CataloguePage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=catalogue.results]"
+    },
+    {
+      "id": "catalogue.card",
+      "kind": "COMPONENT",
+      "label": "Catalogue product card",
+      "page": "/products",
+      "sourcePath": "client/src/features/catalogue/CatalogueProductCard.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ]
+    },
+    {
+      "id": "catalogue.filter",
+      "kind": "COMPONENT",
+      "label": "Category filter",
+      "page": "/products",
+      "sourcePath": "client/src/features/catalogue/CategoryFilter.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=catalogue.filter]"
+    },
+    {
+      "id": "product.detail",
+      "kind": "COMPONENT",
+      "label": "Product detail",
+      "page": "/products/:slug",
+      "sourcePath": "client/src/pages/ProductDetailPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT",
+        "UPDATE_ASSET",
+        "CREATE_COMPONENT_VARIANT"
+      ],
+      "selector": "[data-builder-id=product.detail]"
+    },
+    {
+      "id": "product.variants",
+      "kind": "COMPONENT",
+      "label": "Variant selector",
+      "page": "/products/:slug",
+      "sourcePath": "client/src/features/product/VariantSelector.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=product.variants]"
+    },
+    {
+      "id": "product.related-card",
+      "kind": "COMPONENT",
+      "label": "Related product card",
+      "page": "/products/:slug",
+      "sourcePath": "client/src/features/product/RelatedProductCard.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ]
+    },
+    {
+      "id": "cart.lines",
+      "kind": "COMPONENT",
+      "label": "Basket lines",
+      "page": "/cart",
+      "sourcePath": "client/src/pages/CartPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=cart.lines]"
+    },
+    {
+      "id": "cart.summary",
+      "kind": "COMPONENT",
+      "label": "Basket totals",
+      "page": "/cart",
+      "sourcePath": "client/src/features/cart/CartSummary.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=cart.summary]"
+    },
+    {
+      "id": "checkout.form",
+      "kind": "COMPONENT",
+      "label": "Checkout page",
+      "page": "/checkout",
+      "sourcePath": "client/src/pages/CheckoutPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=checkout.form]"
+    },
+    {
+      "id": "checkout.delivery",
+      "kind": "COMPONENT",
+      "label": "Delivery details form",
+      "page": "/checkout",
+      "sourcePath": "client/src/features/checkout/DeliveryFields.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=checkout.delivery]"
+    },
+    {
+      "id": "confirmation.receipt",
+      "kind": "COMPONENT",
+      "label": "Confirmation page",
+      "page": "/orders/confirmation/:reference",
+      "sourcePath": "client/src/pages/ConfirmationPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=confirmation.receipt]"
+    },
+    {
+      "id": "order.summary",
+      "kind": "COMPONENT",
+      "label": "Order summary block",
+      "page": "*",
+      "sourcePath": "client/src/features/orders/OrderSummary.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=order.summary]"
+    },
+    {
+      "id": "lookup.form",
+      "kind": "COMPONENT",
+      "label": "Order lookup",
+      "page": "/orders/lookup",
+      "sourcePath": "client/src/pages/LookupPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=lookup.form]"
+    },
+    {
+      "id": "auth.login",
+      "kind": "COMPONENT",
+      "label": "Sign-in page",
+      "page": "/login",
+      "sourcePath": "client/src/pages/LoginPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=auth.login]"
+    },
+    {
+      "id": "auth.login-form",
+      "kind": "COMPONENT",
+      "label": "Sign-in form",
+      "page": "/login",
+      "sourcePath": "client/src/features/auth/LoginForm.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=auth.login-form]"
+    },
+    {
+      "id": "auth.register",
+      "kind": "COMPONENT",
+      "label": "Sign-up page",
+      "page": "/register",
+      "sourcePath": "client/src/pages/RegisterPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=auth.register]"
+    },
+    {
+      "id": "auth.register-form",
+      "kind": "COMPONENT",
+      "label": "Sign-up form",
+      "page": "/register",
+      "sourcePath": "client/src/features/auth/RegisterForm.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=auth.register-form]"
+    },
+    {
+      "id": "account.overview",
+      "kind": "COMPONENT",
+      "label": "Account page",
+      "page": "/account",
+      "sourcePath": "client/src/pages/AccountPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=account.overview]"
+    },
+    {
+      "id": "site.header",
+      "kind": "COMPONENT",
+      "label": "Site header",
+      "page": "*",
+      "sourcePath": "client/src/components/site-header.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=site.header]"
+    },
+    {
+      "id": "site.footer",
+      "kind": "COMPONENT",
+      "label": "Site footer",
+      "page": "*",
+      "sourcePath": "client/src/components/site-footer.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=site.footer]"
+    },
+    {
+      "id": "dashboard.navigation",
+      "kind": "COMPONENT",
+      "label": "Dashboard sidebar",
+      "page": "/dashboard/*",
+      "sourcePath": "client/src/components/dashboard-nav.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.navigation]"
+    },
+    {
+      "id": "dashboard.overview",
+      "kind": "COMPONENT",
+      "label": "Dashboard overview",
+      "page": "/dashboard",
+      "sourcePath": "client/src/pages/dashboard/DashboardPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.overview]"
+    },
+    {
+      "id": "dashboard.metrics",
+      "kind": "COMPONENT",
+      "label": "Metric tiles",
+      "page": "/dashboard",
+      "sourcePath": "client/src/features/dashboard/MetricCards.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.metrics]"
+    },
+    {
+      "id": "dashboard.orders",
+      "kind": "COMPONENT",
+      "label": "Order queue",
+      "page": "/dashboard/orders",
+      "sourcePath": "client/src/pages/dashboard/OrdersPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.orders]"
+    },
+    {
+      "id": "dashboard.inventory",
+      "kind": "COMPONENT",
+      "label": "Inventory table",
+      "page": "/dashboard/inventory",
+      "sourcePath": "client/src/pages/dashboard/InventoryPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.inventory]"
+    },
+    {
+      "id": "dashboard.products",
+      "kind": "COMPONENT",
+      "label": "Product table",
+      "page": "/dashboard/products",
+      "sourcePath": "client/src/pages/dashboard/ProductsPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.products]"
+    },
+    {
+      "id": "dashboard.product-form",
+      "kind": "COMPONENT",
+      "label": "Product form",
+      "page": "/dashboard/products",
+      "sourcePath": "client/src/features/dashboard/ProductForm.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.product-form]"
+    },
+    {
+      "id": "dashboard.variant-editor",
+      "kind": "COMPONENT",
+      "label": "Variant editor",
+      "page": "/dashboard/products",
+      "sourcePath": "client/src/features/dashboard/VariantEditor.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.variant-editor]"
+    },
+    {
+      "id": "dashboard.users",
+      "kind": "COMPONENT",
+      "label": "Team table",
+      "page": "/dashboard/users",
+      "sourcePath": "client/src/pages/dashboard/UsersPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.users]"
+    },
+    {
+      "id": "dashboard.settings",
+      "kind": "COMPONENT",
+      "label": "Settings panel",
+      "page": "/dashboard/settings",
+      "sourcePath": "client/src/pages/dashboard/SettingsPage.tsx",
+      "operations": [
+        "UPDATE_CONTENT",
+        "UPDATE_DESIGN_TOKEN",
+        "CONFIGURE_COMPONENT"
+      ],
+      "selector": "[data-builder-id=dashboard.settings]"
+    }
+  ],
+  "featureSlots": [
+    {
+      "id": "shop.merchandising",
+      "label": "Merchandising",
+      "supportedFeatures": [
+        "reviews",
+        "wishlists",
+        "promotions"
+      ],
+      "sourcePath": "client/src/features"
+    },
+    {
+      "id": "shop.operations",
+      "label": "Shop operations",
+      "supportedFeatures": [
+        "reporting",
+        "discount-codes",
+        "delivery-zones"
+      ],
+      "sourcePath": "client/src/pages/dashboard"
+    }
+  ],
+  "pages": [
+    {
+      "id": "homepage",
+      "manifest": "page-manifests/homepage/page.manifest.json"
+    },
+    {
+      "id": "catalogue",
+      "manifest": "page-manifests/catalogue/page.manifest.json"
+    },
+    {
+      "id": "product-detail",
+      "manifest": "page-manifests/product-detail/page.manifest.json"
+    },
+    {
+      "id": "cart",
+      "manifest": "page-manifests/cart/page.manifest.json"
+    },
+    {
+      "id": "checkout",
+      "manifest": "page-manifests/checkout/page.manifest.json"
+    },
+    {
+      "id": "order-confirmation",
+      "manifest": "page-manifests/order-confirmation/page.manifest.json"
+    },
+    {
+      "id": "order-lookup",
+      "manifest": "page-manifests/order-lookup/page.manifest.json"
+    },
+    {
+      "id": "login",
+      "manifest": "page-manifests/login/page.manifest.json"
+    },
+    {
+      "id": "register",
+      "manifest": "page-manifests/register/page.manifest.json"
+    },
+    {
+      "id": "account",
+      "manifest": "page-manifests/account/page.manifest.json"
+    },
+    {
+      "id": "dashboard",
+      "manifest": "page-manifests/dashboard/page.manifest.json"
+    },
+    {
+      "id": "dashboard-orders",
+      "manifest": "page-manifests/dashboard-orders/page.manifest.json"
+    },
+    {
+      "id": "dashboard-inventory",
+      "manifest": "page-manifests/dashboard-inventory/page.manifest.json"
+    },
+    {
+      "id": "dashboard-products",
+      "manifest": "page-manifests/dashboard-products/page.manifest.json"
+    },
+    {
+      "id": "dashboard-users",
+      "manifest": "page-manifests/dashboard-users/page.manifest.json"
+    },
+    {
+      "id": "dashboard-settings",
+      "manifest": "page-manifests/dashboard-settings/page.manifest.json"
+    },
+    {
+      "id": "site-chrome",
+      "manifest": "page-manifests/site-chrome/page.manifest.json"
+    },
+    {
+      "id": "dashboard-chrome",
+      "manifest": "page-manifests/dashboard-chrome/page.manifest.json"
+    },
+    {
+      "id": "order-summary",
+      "manifest": "page-manifests/order-summary/page.manifest.json"
+    },
+    {
+      "id": "cart-summary",
+      "manifest": "page-manifests/cart-summary/page.manifest.json"
+    }
+  ]
+}

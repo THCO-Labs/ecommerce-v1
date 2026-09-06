@@ -1,0 +1,12 @@
+{
+  "name": "Northwind Market",
+  "nameParts": {
+    "lead": "Northwind",
+    "accent": "Market"
+  },
+  "description": "Everyday goods, honestly priced. Order online and pay cash when it arrives at your door.",
+  "tagline": "Pay on delivery",
+  "url": "https://northwind-market.example.com",
+  "logoPath": null,
+  "theme": "light"
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "product-detail",
+  "route": "/products/:slug",
+  "title": "Product detail",
+  "description": "One product, its options and its price.",
+  "sourceEntry": "client/src/pages/ProductDetailPage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "products",
+    "variants"
+  ],
+  "componentDependencies": [
+    "client/src/features/product/VariantSelector.tsx",
+    "client/src/features/product/RelatedProductCard.tsx"
+  ],
+  "editableSections": [
+    "product.detail",
+    "product.variants",
+    "product.related-card"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/products/stoneware-mug",
+    "fixture": "page-manifests/product-detail/fixtures.json"
+  },
+  "verification": [
+    "product-renders",
+    "add-to-basket-works"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

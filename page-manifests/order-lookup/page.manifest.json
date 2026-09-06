@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "order-lookup",
+  "route": "/orders/lookup",
+  "title": "Track an order",
+  "description": "Reference plus email is a guest's credential for their own order, and the only way to see the full record without an account..",
+  "sourceEntry": "client/src/pages/LookupPage.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "orders"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "lookup.form"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/orders/lookup",
+    "fixture": "page-manifests/order-lookup/fixtures.json"
+  },
+  "verification": [
+    "lookup-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

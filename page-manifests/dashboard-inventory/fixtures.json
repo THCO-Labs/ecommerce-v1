@@ -1,0 +1,4 @@
+{
+  "description": "Inventory and restocking",
+  "route": "/dashboard/inventory"
+}

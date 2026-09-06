@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "cart-summary",
+  "route": "/cart",
+  "title": "Basket totals",
+  "description": "The money panel, shown on the basket and again at checkout.",
+  "sourceEntry": "client/src/features/cart/CartSummary.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "cart"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "cart.summary"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/cart",
+    "fixture": "page-manifests/cart-summary/fixtures.json"
+  },
+  "verification": [
+    "cart-summary-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

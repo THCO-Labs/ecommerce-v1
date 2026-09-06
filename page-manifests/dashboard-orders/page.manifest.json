@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "dashboard-orders",
+  "route": "/dashboard/orders",
+  "title": "Order fulfilment",
+  "description": "The fulfilment queue.",
+  "sourceEntry": "client/src/pages/dashboard/OrdersPage.tsx",
+  "access": "staff",
+  "dataDependencies": [
+    "orders"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "dashboard.orders"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.operations"
+  ],
+  "preview": {
+    "url": "/dashboard/orders",
+    "fixture": "page-manifests/dashboard-orders/fixtures.json"
+  },
+  "verification": [
+    "orders-table-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

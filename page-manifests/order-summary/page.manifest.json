@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "order-summary",
+  "route": "/orders/lookup",
+  "title": "Order summary block",
+  "description": "What was ordered and what it cost, shown on the confirmation page, the order lookup and the customer's account.",
+  "sourceEntry": "client/src/features/orders/OrderSummary.tsx",
+  "access": "public",
+  "dataDependencies": [
+    "orders"
+  ],
+  "componentDependencies": [],
+  "editableSections": [
+    "order.summary"
+  ],
+  "allowedOperations": [
+    "UPDATE_CONTENT",
+    "UPDATE_DESIGN_TOKEN",
+    "CONFIGURE_COMPONENT"
+  ],
+  "featureSlots": [
+    "shop.merchandising"
+  ],
+  "preview": {
+    "url": "/orders/lookup",
+    "fixture": "page-manifests/order-summary/fixtures.json"
+  },
+  "verification": [
+    "order-summary-renders"
+  ],
+  "protectedDependencies": [
+    "server/src/common/db",
+    "server/src/modules/auth"
+  ]
+}

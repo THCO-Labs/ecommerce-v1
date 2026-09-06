@@ -1,0 +1,206 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Dark mode is class-driven: the ThemeProvider toggles `.dark` on <html>. */
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens — "Market Amber"
+   Palette anchors: #fffbf5 · #ffffff · #b45309 · #1c1917
+   Every token is a semantic name. Components never reference raw colours, so
+   re-theming the whole template means editing only the two blocks below.
+--------------------------------------------------------------------------- */
+:root {
+  --background: hsl(40 60% 98%); /* #fffbf5 */
+  --foreground: hsl(20 14% 10%); /* #1c1917 */
+  --card: hsl(0 0% 100%); /* #ffffff */
+  --card-foreground: hsl(20 14% 10%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(20 14% 10%);
+  --primary: hsl(26 90% 37%); /* #b45309 */
+  --primary-foreground: hsl(40 60% 98%);
+  --secondary: hsl(35 45% 93%);
+  --secondary-foreground: hsl(24 40% 18%);
+  --muted: hsl(35 30% 94%);
+  --muted-foreground: hsl(25 10% 40%);
+  --accent: hsl(35 50% 90%);
+  --accent-foreground: hsl(24 45% 20%);
+  --destructive: hsl(0 72% 47%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --success: hsl(142 60% 30%);
+  --success-foreground: hsl(0 0% 100%);
+  --border: hsl(33 25% 87%);
+  --input: hsl(33 25% 87%);
+  --ring: hsl(26 90% 37%);
+  --radius: 0.625rem;
+
+  /* Sidebar surface (dashboard shell) */
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(20 14% 10%);
+  --sidebar-primary: hsl(26 90% 37%);
+  --sidebar-primary-foreground: hsl(40 60% 98%);
+  --sidebar-accent: hsl(35 50% 90%);
+  --sidebar-accent-foreground: hsl(24 45% 20%);
+  --sidebar-border: hsl(33 25% 87%);
+  --sidebar-ring: hsl(26 90% 37%);
+
+  /* Chart series */
+  --chart-1: hsl(26 90% 37%);
+  --chart-2: hsl(35 92% 50%);
+  --chart-3: hsl(142 60% 35%);
+  --chart-4: hsl(199 89% 48%);
+  --chart-5: hsl(0 72% 51%);
+
+  /* Brand ramp — replaced at first build by the selected palette. */
+  --brand-50: #fffbeb;
+  --brand-100: #fef3c7;
+  --brand-200: #fde68a;
+  --brand-300: #fcd34d;
+  --brand-400: #fbbf24;
+  --brand-500: #f59e0b;
+  --brand-600: #d97706;
+  --brand-700: #b45309;
+  --brand-800: #92400e;
+  --brand-900: #78350f;
+  --brand-950: #451a03;
+}
+
+.dark {
+  --background: hsl(20 14% 8%); /* #16120f */
+  --foreground: hsl(40 50% 96%);
+  --card: hsl(20 14% 12%);
+  --card-foreground: hsl(40 50% 96%);
+  --popover: hsl(20 14% 12%);
+  --popover-foreground: hsl(40 50% 96%);
+  --primary: hsl(35 92% 55%); /* brighter amber carries on a dark ground */
+  --primary-foreground: hsl(20 14% 8%);
+  --secondary: hsl(24 20% 18%);
+  --secondary-foreground: hsl(40 50% 94%);
+  --muted: hsl(24 16% 17%);
+  --muted-foreground: hsl(35 15% 68%);
+  --accent: hsl(24 22% 22%);
+  --accent-foreground: hsl(40 50% 94%);
+  --destructive: hsl(0 62% 45%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --success: hsl(142 50% 45%);
+  --success-foreground: hsl(20 14% 8%);
+  --border: hsl(24 18% 22%);
+  --input: hsl(24 18% 22%);
+  --ring: hsl(35 92% 55%);
+
+  --sidebar: hsl(20 14% 12%);
+  --sidebar-foreground: hsl(40 50% 96%);
+  --sidebar-primary: hsl(35 92% 55%);
+  --sidebar-primary-foreground: hsl(20 14% 8%);
+  --sidebar-accent: hsl(24 22% 22%);
+  --sidebar-accent-foreground: hsl(40 50% 94%);
+  --sidebar-border: hsl(24 18% 22%);
+  --sidebar-ring: hsl(35 92% 55%);
+
+  --chart-1: hsl(35 92% 55%);
+  --chart-2: hsl(26 85% 60%);
+  --chart-3: hsl(142 50% 50%);
+  --chart-4: hsl(199 89% 60%);
+  --chart-5: hsl(0 70% 60%);
+}
+
+/* @generated:theme-start */
+/* @generated:theme-end */
+
+/* ---------------------------------------------------------------------------
+   Tailwind theme mapping — turns the tokens above into utilities
+   (bg-background, text-muted-foreground, border-border, rounded-lg, …).
+--------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-soft: 0 10px 30px -12px rgb(69 26 3 / 0.15);
+  --shadow-soft-lg: 0 20px 45px -18px rgb(69 26 3 / 0.25);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Prices and SKUs line up in tables when their digits are the same width. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  width: 100%;
+  max-width: 1200px;
+
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 1024px) {
+    padding-inline: 2rem;
+  }
+}
